@@ -1,0 +1,331 @@
+{
+  "ControlAccount": "3700000000000001",
+  "endYear": "2025",
+  "accNumber": "3700000000000001",
+  "SUBJECT": "Your American Express&reg; BTA Card Management Reports",
+  "clientName": "Bob Jones",
+  "currentAvgAmountTotalTotal": "0.00",
+  "EMCFILENAME": "Amex.emc",
+  "REPLYTO": "American Express <amexcorpstatements@nedbank.co.za>",
+  "prevTransTotalTotal": 17,
+  "PRODUCT": "BTA",
+  "FROM": "American Express <amexcorpstatements@nedbank.co.za>",
+  "prevAvgAmountTotal": "761.00",
+  "reportDate": "04-03-2025",
+  "TO": "Bob Jones <Ncube@satregional.org>",
+  "currentAmountTotal": "0.00",
+  "startYear": "2024",
+  "categoryAnalysisRepeat": [
+    {
+      "prevAmount": "3,229.64",
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "prevAVGTransaction": "1,614.82",
+      "prevTrans": 2,
+      "currentAVGTransaction": "0.00",
+      "category": "Airlines"
+    },
+    {
+      "currentAVGTransaction": "0.00",
+      "category": "Other Transportation",
+      "prevAVGTransaction": "532.93",
+      "prevTrans": 11,
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "prevAmount": "5,862.23"
+    },
+    {
+      "prevAmount": "3,845.20",
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "prevTrans": 4,
+      "prevAVGTransaction": "961.30",
+      "category": "Travel & Tour Operators",
+      "currentAVGTransaction": "0.00"
+    }
+  ],
+  "prevMonthTransTotal": "17",
+  "UNAME": "test",
+  "PWD": "1234",
+  "reportPeriod": "01-01-2024 to 28-02-2025",
+  "graphdata": {
+    "spendanalysisgraph": {
+      "labels": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "data": [
+        {
+          "202501": "null",
+          "202401": 0
+        },
+        {
+          "202502": "null",
+          "202402": 0
+        },
+        {
+          "202503": "null",
+          "202403": 0
+        },
+        {
+          "202504": "null",
+          "202404": 0
+        },
+        {
+          "202405": 0,
+          "202505": "null"
+        },
+        {
+          "202506": "null",
+          "202406": 0
+        },
+        {
+          "202407": 12937.07,
+          "202507": "null"
+        },
+        {
+          "202508": "null",
+          "202408": 0
+        },
+        {
+          "202509": "null",
+          "202409": 0
+        },
+        {
+          "202510": "null",
+          "202410": 0
+        },
+        {
+          "202511": "null",
+          "202411": 0
+        },
+        {
+          "202512": "null",
+          "202412": 0
+        }
+      ]
+    },
+    "suppliergraph": {
+      "data": [
+        {
+          "2024": 322964,
+          "category": "Airlines",
+          "2025": 0,
+          "color": 255
+        },
+        {
+          "2025": 0,
+          "2024": 586223,
+          "category": "Other Transportation",
+          "color": 65535
+        },
+        {
+          "category": "Travel & Tour Operators",
+          "2024": 384520,
+          "2025": 0,
+          "color": 65408
+        }
+      ],
+      "labels": [
+        "2024",
+        "2025"
+      ]
+    }
+  },
+  "prevAmountTotal": "12,937.07",
+  "RECIPIENT": "charl.cronje@plus3.co.za",
+  "currentTransTotal": 0,
+  "Heading": "American Express&reg; BTA Card",
+  "prevAvgAmountTotalTotal": "761.00",
+  "prevAmountTotalTotal": "12,937.07",
+  "prevMonthAmountTotal": "12,937.07",
+  "reportHeading": "American%20Express&reg;%20BTA%20Card",
+  "currentTransTotalTotal": 0,
+  "cardMemberAmountsRepeat": [
+    {
+      "currentYtdAmount": "0.00",
+      "prevYtdTrans": "0",
+      "prevYtdAmount": "0.00",
+      "currentYtdTrans": "0",
+      "prevMonthTrans": 0,
+      "prevMonthAmount": "0.00",
+      "month": "January"
+    },
+    {
+      "month": "February",
+      "prevYtdAmount": "0.00",
+      "prevYtdTrans": "0",
+      "currentYtdAmount": "0.00",
+      "currentYtdTrans": "0",
+      "prevMonthTrans": 0,
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "prevYtdAmount": "0.00",
+      "prevYtdTrans": "0",
+      "prevMonthTrans": 0,
+      "month": "March",
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "month": "April",
+      "prevMonthTrans": 0,
+      "prevYtdAmount": "0.00",
+      "prevYtdTrans": "0",
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "prevYtdTrans": "0",
+      "prevYtdAmount": "0.00",
+      "month": "May",
+      "prevMonthTrans": 0,
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "prevMonthAmount": "0.00",
+      "prevMonthTrans": 0,
+      "month": "June",
+      "prevYtdTrans": "0",
+      "prevYtdAmount": "0.00"
+    },
+    {
+      "prevMonthAmount": "12,937.07",
+      "month": "July",
+      "prevMonthTrans": 17,
+      "prevYtdTrans": "17",
+      "prevYtdAmount": "12,937.07"
+    },
+    {
+      "prevYtdTrans": "17",
+      "prevYtdAmount": "12,937.07",
+      "month": "August",
+      "prevMonthTrans": 0,
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "month": "September",
+      "prevMonthTrans": 0,
+      "prevYtdAmount": "12,937.07",
+      "prevYtdTrans": "17",
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "prevMonthAmount": "0.00",
+      "prevYtdAmount": "12,937.07",
+      "prevYtdTrans": "17",
+      "prevMonthTrans": 0,
+      "month": "October"
+    },
+    {
+      "prevMonthTrans": 0,
+      "month": "November",
+      "prevYtdAmount": "12,937.07",
+      "prevYtdTrans": "17",
+      "prevMonthAmount": "0.00"
+    },
+    {
+      "prevYtdTrans": "17",
+      "prevYtdAmount": "12,937.07",
+      "prevMonthTrans": 0,
+      "month": "December",
+      "prevMonthAmount": "0.00"
+    }
+  ],
+  "currentAmountTotalTotal": "0.00",
+  "currentMonthTransTotal": "0",
+  "subCategoryAnalysisRepeat": [
+    {
+      "prevAVGTransaction": "1,614.82",
+      "prevTrans": 2,
+      "category": "Airlines",
+      "currentAVGTransaction": "0.00",
+      "bgColor": "",
+      "prevAmount": "3,229.64",
+      "currentAmount": "0.00",
+      "currentTrans": 0,
+      "discription": "Berg 4x4 Rentals 3D"
+    },
+    {
+      "category": "Total Airlines",
+      "bgColor": "bgcolor=\"#86cbf8\"",
+      "currentAVGTransaction": "0.00",
+      "prevAVGTransaction": "1,614.82",
+      "prevTrans": 2,
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "topLine": "style=\"border-top: 1px solid Black; border-bottom: 1px solid Black;\"",
+      "prevAmount": "3,229.64"
+    },
+    {
+      "category": "Other Transportation",
+      "bgColor": "",
+      "currentAVGTransaction": "0.00",
+      "prevAVGTransaction": "532.93",
+      "prevTrans": 11,
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "discription": "UBER RIDES 3D",
+      "prevAmount": "5,862.23"
+    },
+    {
+      "bgColor": "bgcolor=\"#86cbf8\"",
+      "currentAVGTransaction": "0.00",
+      "category": "Total Other Transportation",
+      "prevAVGTransaction": "532.93",
+      "prevTrans": 11,
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "prevAmount": "5,862.23",
+      "topLine": "style=\"border-top: 1px solid Black; border-bottom: 1px solid Black;\""
+    },
+    {
+      "prevAmount": "1,629.55",
+      "currentAmount": "0.00",
+      "currentTrans": 0,
+      "discription": "AMEX TRAVEL BRAAM HEAD/O",
+      "prevAVGTransaction": "1,629.55",
+      "prevTrans": 1,
+      "category": "Travel & Tour Operators",
+      "bgColor": "",
+      "currentAVGTransaction": "0.00"
+    },
+    {
+      "category": "",
+      "currentAVGTransaction": "0.00",
+      "bgColor": "",
+      "prevTrans": 3,
+      "prevAVGTransaction": "738.55",
+      "currentAmount": "0.00",
+      "currentTrans": 0,
+      "discription": "SEEKERS TRAVEL WORLD H/O",
+      "prevAmount": "2,215.65"
+    },
+    {
+      "currentAVGTransaction": "0.00",
+      "bgColor": "bgcolor=\"#86cbf8\"",
+      "category": "Total Travel & Tour Operators",
+      "prevAVGTransaction": "961.30",
+      "prevTrans": 4,
+      "currentTrans": 0,
+      "currentAmount": "0.00",
+      "prevAmount": "3,845.20",
+      "topLine": "style=\"border-top: 1px solid Black; border-bottom: 1px solid Black;\""
+    }
+  ],
+  "CARBONCOPY": "",
+  "COVER_LETTER": "Amex Corporate",
+  "prevTransTotal": 17,
+  "currentMonthAmountTotal": "0.00",
+  "TwoImages": "NO",
+  "currentAvgAmountTotal": "0.00"
+}

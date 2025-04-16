@@ -1,0 +1,30 @@
+# Build Process
+
+This document explains how the build process works for this React dashboard project.
+
+## Steps
+
+1. **Development:**
+   - Run `npm start` to launch the development server.
+   - Hot-reloads on file changes.
+
+2. **Production Build:**
+   - Run `npm run build` to create an optimized production build.
+   - Output goes to the `build/` directory.
+   - Only files in the `public/` directory (e.g. images, data) are copied as-is.
+   - All JS/CSS is minified and bundled.
+
+3. **Serving the Build:**
+   - Use `serve -s build` to serve the static site locally.
+   - Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+4. **Deploying:**
+   - Upload the `build/` directory to your static hosting provider (Netlify, Vercel, S3, etc).
+
+## Key Points
+- **Static Assets:** Only files in `public/` are copied to the build output.
+- **Data:** Place test data in `public/data/`.
+- **Images:** Place images in `public/images/`.
+- **Do NOT reference images in `src/` with absolute paths.**
+
+See `assets-and-testdata.md` for more on static assets.
