@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /
+
+# If the requested file or directory exists in root, serve it
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# If the file exists in /build, serve it
+RewriteCond %{DOCUMENT_ROOT}/build%{REQUEST_URI} -f
+RewriteRule ^(.*)$ /build/$1 [L]
+
+# Otherwise, fallback to /build/index.html
+RewriteRule ^ /build/index.html [L]

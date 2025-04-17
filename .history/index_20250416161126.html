@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>American Express Dashboard Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background: #181c22;
+      color: #e6eaf1;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; padding: 0; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .container {
+      max-width: 600px; margin: 4em auto 2em auto; padding: 2em; background: #232834; border-radius: 14px; box-shadow: 0 4px 24px #0003;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    img.logo {
+      width: 180px; margin-bottom: 2em; border-radius: 10px; background: #fff; box-shadow: 0 2px 12px #0002;
+    }
+    h1 { color: #58a6ff; margin-bottom: 0.5em; }
+    .desc { color: #b2bac6; font-size: 1.08em; margin-bottom: 1.8em; text-align: center; }
+    a.big-link {
+      display: block; width: 100%; background: #1f6feb; color: #fff; text-decoration: none; font-weight: bold;
+      margin: 1.2em 0; padding: 1.2em 0; border-radius: 7px; text-align: center; font-size: 1.25em;
+      box-shadow: 0 2px 12px #0002; transition: background 0.15s, box-shadow 0.15s;
+    }
+    a.big-link:hover { background: #58a6ff; box-shadow: 0 4px 16px #0004; }
+    .footer { text-align: center; color: #b2bac6; margin-top: 2em; font-size: 0.92em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="images/plus3logo.webp" alt="Plus3 Logo" class="logo" />
+    <h1>American Express Reports Portal</h1>
+    <div class="desc">
+      Welcome! Access the interactive dashboard demo and full technical documentation below.
+    </div>
+    <a class="big-link" href="/build/">
+      Dashboard Demo<br>
+      <span class="desc">Try the live React dashboard with light/dark mode, real data, and full theming.</span>
+    </a>
+    <a class="big-link" href="/docs/html/">
+      Documentation<br>
+      <span class="desc">Browse the complete technical documentation, customization guides, and architecture options.</span>
+    </a>
+  </div>
+  <div class="footer">
+    &copy; 2025 Plus3 | Built for American Express with ❤️ | <a href="mailto:support@plus3.co.za" style="color:#58a6ff;">Contact Support</a>
+  </div>
+</body>
+</html>

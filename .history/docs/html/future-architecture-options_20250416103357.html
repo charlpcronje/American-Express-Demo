@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>future-architecture-options.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/apps/vsode/pdf-css.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="future-architecture-options--recommendations">Future Architecture Options &amp; Recommendations</h1>
+<blockquote>
+<p><a href="./README.html">Back to README</a></p>
+</blockquote>
+<p>This document outlines possible strategies for building and scaling your dashboard component ecosystem, considering your technical constraints and long-term flexibility. Each option is described with its pros, cons, and technical implications. Two additional ideas from best practices are included at the end.</p>
+<hr>
+<h2 id="constraints">Constraints</h2>
+<ul>
+<li><strong>Razor templates</strong> will continue to be used for integrating data into templates.</li>
+<li>The solution must not break or replace existing Razor-based data flows.</li>
+</ul>
+<hr>
+<h2 id="1-online-component-library-with-theming-api">1. Online Component Library with Theming API</h2>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Host all reusable UI components in an online library (npm, CDN, or private server).</li>
+<li>Razor templates reference these components directly (via script/module imports or as web components).</li>
+<li>Theming and configuration are passed as props or attributes (JSON, data-attributes, or inline config).</li>
+<li>All business logic is kept outside the components; components are purely presentational.</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Centralizes design and logic; updates propagate everywhere.</li>
+<li>Easy to enforce theming and branding.</li>
+<li>Components can be versioned and documented.</li>
+<li>No business logic in UI layer—separation of concerns.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Requires robust versioning and deployment strategy.</li>
+<li>Razor integration may need wrapper helpers for seamless use.</li>
+<li>Some learning curve for non-JS developers.</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>You want maximum reusability and central governance of UI components.</li>
+</ul>
+<hr>
+<h2 id="2-xml--xslt-component-transformation">2. XML + XSLT Component Transformation</h2>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Dashboards/pages are authored in XML, describing layout and data.</li>
+<li>XSLT transforms XML into HTML using component tags, injecting data as needed.</li>
+<li>Components are pulled in from a library server as needed.</li>
+<li>Data is loaded into components via XSLT or post-processing.</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Elegant separation of data/content (XML) and presentation (XSLT/components).</li>
+<li>Can be managed by non-JS developers and designers.</li>
+<li>Versioned, auditable templates.</li>
+<li>XSLT can be run server-side or client-side.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>XSLT expertise required (rare skill).</li>
+<li>Debugging can be more complex.</li>
+<li>Tooling and browser support for XSLT is limited.</li>
+<li>May be harder to integrate with modern JS frameworks.</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>You want a clear separation of data and presentation, and have XML/XSLT expertise.</li>
+</ul>
+<hr>
+<h2 id="3-web-components-via-litelement--react-wrappers">3. Web Components via LitElement + React Wrappers</h2>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Build core UI as <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a> using LitElement (or similar).</li>
+<li>Publish these as a library (npm, CDN, or private server).</li>
+<li>Use lightweight React wrappers to enable reactivity and integration with existing React code.</li>
+<li>Razor templates reference web components as custom tags.</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>True framework-agnostic components (usable in React, Angular, Vue, Razor, etc.).</li>
+<li>Can be loaded as custom elements anywhere.</li>
+<li>React wrappers can provide hooks, state, and advanced logic.</li>
+<li>Easy to share across teams and codebases.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Slightly more complex build and testing setup.</li>
+<li>Some edge cases with React &lt;-&gt; Web Component event communication.</li>
+<li>Not all legacy browsers support Web Components natively (but polyfills exist).</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>You want maximum flexibility and future-proofing for your component library.</li>
+</ul>
+<hr>
+<h2 id="4-xmlt-driven-web-components-no-js-authoring">4. XMLT-Driven Web Components (No-JS Authoring)</h2>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Authors write dashboards using custom XML tags (representing components).</li>
+<li>XMLT (XML Transformation Tool) converts these tags into actual web components at build or runtime.</li>
+<li>Components are loaded from a protected library server (CORS-restricted).</li>
+<li>All JS is loaded only as needed, and only by authorized users.</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Enables non-JS authors to build dashboards using custom tags.</li>
+<li>JS is protected and only loaded for authorized clients.</li>
+<li>Centralized component control and versioning.</li>
+<li>Can integrate with existing Razor data flows by transforming tags server-side.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Requires custom tooling (XMLT, server-side transforms, etc.).</li>
+<li>Debugging and error tracing can be tricky.</li>
+<li>Still requires solid documentation and onboarding.</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>You want to empower non-JS authors and tightly control JS usage.</li>
+</ul>
+<hr>
+<h2 id="5-ai-suggestion-micro-frontend-architecture-with-module-federation">5. (AI Suggestion) Micro-Frontend Architecture with Module Federation</h2>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Each dashboard or major feature is a separate micro-frontend (React, Razor, or other), loaded dynamically via <a href="https://webpack.js.org/concepts/module-federation/">Webpack Module Federation</a>.</li>
+<li>Shared components are exposed as federated modules from a central library.</li>
+<li>Each team can deploy independently, but share a common UI language.</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Enables independent deployment, scaling, and versioning.</li>
+<li>Shared components are loaded only when needed.</li>
+<li>Works with any frontend stack (React, Razor, etc.).</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Increased build/deployment complexity.</li>
+<li>Requires careful dependency management and CI/CD setup.</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>You want to scale development across multiple teams and dashboards.</li>
+</ul>
+<hr>
+<h2 id="6-ai-suggestion-server-driven-ui-via-json-schema">6. (AI Suggestion) Server-Driven UI via JSON Schema</h2>
+<p><strong>Description:</strong></p>
+<ul>
+<li>Dashboards are described as JSON schemas (or similar config), specifying layout, component types, theming, and data sources.</li>
+<li>A universal renderer (React, web components, or Razor helper) reads the schema and renders the appropriate components.</li>
+<li>All business logic, data fetching, and theming is handled outside the component library.</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Maximum flexibility and decoupling.</li>
+<li>Dashboards can be built/modified without code changes.</li>
+<li>Easy to integrate with existing Razor templates (render helpers can read schema).</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Requires building or adopting a schema renderer.</li>
+<li>May limit highly custom UI/UX.</li>
+</ul>
+<p><strong>Use When:</strong></p>
+<ul>
+<li>You want to empower non-devs to build dashboards, or need to automate dashboard creation at scale.</li>
+</ul>
+<hr>
+<h2 id="recommendation--next-steps">Recommendation &amp; Next Steps</h2>
+<ul>
+<li>Review these options with your team and stakeholders.</li>
+<li>Consider your team's skills, maintenance needs, and long-term vision.</li>
+<li>Start with a proof-of-concept for your top 1–2 options.</li>
+<li>Document your decision and onboarding steps for future contributors.</li>
+</ul>
+<hr>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="./component-customization-and-best-practices.html">Component Customization &amp; Best Practices</a></li>
+<li><a href="./customization-guide.html">Customization Guide</a></li>
+<li><a href="./build-process.html">Build Process</a></li>
+<li><a href="./troubleshooting.html">Troubleshooting Guide</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.html</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/apps/vsode/pdf-css.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="american-express-reports-dashboard">American Express Reports Dashboard</h1>
+<blockquote>
+<p><a href="./component-customization-and-best-practices.html">Component Customization &amp; Best Practices</a>
+<a href="./assets-and-testdata.html">Assets and Test Data</a>
+<a href="./build-process.html">Build Process</a>
+<a href="./troubleshooting.html">Troubleshooting Guide</a></p>
+</blockquote>
+<h2 id="%F0%9F%93%9A-documentation-index">📚 Documentation Index</h2>
+<ul>
+<li><a href="./component-customization-and-best-practices.html">Component Customization &amp; Best Practices</a>: How to customize, extend, and future-proof components. Best practices and options for reuse.</li>
+<li><a href="./assets-and-testdata.html">Assets and Test Data</a>: Where to place images and test data for dev/prod.</li>
+<li><a href="./build-process.html">Build Process</a>: How to build, serve, and deploy the dashboard.</li>
+<li><a href="./troubleshooting.md">Troubleshooting Guide</a>: Common issues and how to debug them.</li>
+</ul>
+<h2 id="folder-structure">Folder Structure</h2>
+<ul>
+<li><code>/src/components</code>: Reusable UI components</li>
+<li><code>/src/pages</code>: Page-level components</li>
+<li><code>/src/context</code>: Context providers (theme, data)</li>
+<li><code>/src/styles</code>: Global and component styles</li>
+<li><code>/public</code>: Static assets (images, data)</li>
+<li><code>/docs</code>: Project documentation</li>
+</ul>
+<hr>
+<h2 id="project-purpose--demo-context">Project Purpose &amp; Demo Context</h2>
+<p>This project is a demonstration of how to convert interactive dashboards to React using a reusable, component-based approach. The goal is to provide your team with a foundation for building future dashboards and to teach best practices for scalable, maintainable React apps.</p>
+<ul>
+<li><strong>Client context:</strong> This is a demo for your team to evaluate, comment on, and help define requirements for future dashboard components and data integration.</li>
+<li><strong>Component library vision:</strong> All components are designed to be reusable and composable, so you can build a library for future dashboards.</li>
+</ul>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The dashboard uses React and the Context API for global state management (theming, data, etc). Components are modular and easy to reuse in other projects.</p>
+<ul>
+<li><strong>DataContext:</strong> Centralizes data fetching and state.</li>
+<li><strong>ThemeContext:</strong> Manages theming and color schemes.</li>
+<li><strong>Logger:</strong> Centralized logging for debugging and troubleshooting.</li>
+</ul>
+<hr>
+<h2 id="core-components">Core Components</h2>
+<h3 id="context-providers">Context Providers</h3>
+<h4 id="themecontext">ThemeContext</h4>
+<p>The <code>ThemeContext</code> provides theming capabilities throughout the application. It includes:</p>
+<ul>
+<li><code>ThemeProvider</code>: A component that wraps the application and provides theme values</li>
+<li><code>useTheme</code>: A custom hook for consuming theme values</li>
+<li>Theme customization via CSS variables</li>
+</ul>
+<p><strong>Usage Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// App.js</span>
+<span class="hljs-keyword">import</span> { ThemeProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">'./context/ThemeContext'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ThemeProvider</span> <span class="hljs-attr">initialTheme</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">primaryColor:</span> '#<span class="hljs-attr">ff0000</span>' }}&gt;</span>
+      {/* App content */}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ThemeProvider</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// In a component</span>
+<span class="hljs-keyword">import</span> { useTheme } <span class="hljs-keyword">from</span> <span class="hljs-string">'./context/ThemeContext'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyComponent</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> { theme, setTheme } = useTheme();
+  
+  <span class="hljs-comment">// Access theme properties</span>
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">backgroundColor:</span> <span class="hljs-attr">theme.primaryColor</span> }}&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+</div></code></pre>
+<h4 id="datacontext">DataContext</h4>
+<p>The <code>DataContext</code> manages data loading and sharing throughout the application:</p>
+<ul>
+<li><code>DataProvider</code>: A component that wraps the application and provides data</li>
+<li><code>useData</code>: A custom hook for consuming data</li>
+<li>Data fetching and error handling</li>
+</ul>
+<p><strong>Usage Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// App.js</span>
+<span class="hljs-keyword">import</span> { DataProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">'./context/DataContext'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">DataProvider</span> <span class="hljs-attr">initialData</span>=<span class="hljs-string">{initialData}</span> <span class="hljs-attr">dataUrl</span>=<span class="hljs-string">"/api/data.json"</span>&gt;</span>
+      {/* App content */}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">DataProvider</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// In a component</span>
+<span class="hljs-keyword">import</span> { useData } <span class="hljs-keyword">from</span> <span class="hljs-string">'./context/DataContext'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyComponent</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> { data, isLoading, error } = useData();
+  
+  <span class="hljs-keyword">if</span> (isLoading) <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LoadingSpinner</span> /&gt;</span></span>;
+  <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ErrorMessage</span> <span class="hljs-attr">message</span>=<span class="hljs-string">{error}</span> /&gt;</span></span>;
+  
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{data.clientName}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+</div></code></pre>
+<h3 id="main-pages">Main Pages</h3>
+<p>The application includes several main page components:</p>
+<ol>
+<li><strong>Intro</strong>: Landing page with summary cards and navigation to reports</li>
+<li><strong>MonthlySpendAnalysis</strong>: Monthly spending trends with year-to-year comparison</li>
+<li><strong>MonthlySupplierCategoryAnalysis</strong>: Breakdown of spending by supplier category</li>
+<li><strong>MonthlySupplierAnalysis</strong>: Detailed supplier transaction table</li>
+</ol>
+<p>Each page component accepts customization props:</p>
+<ul>
+<li><code>customStyles</code>: Object for styling customization</li>
+<li>Component-specific props (e.g., <code>chartOptions</code>, <code>tableOptions</code>)</li>
+</ul>
+<h3 id="ui-components">UI Components</h3>
+<h4 id="memberdetails">MemberDetails</h4>
+<p>Displays card member information.</p>
+<pre class="hljs"><code><div>&lt;MemberDetails 
+  customStyles={{
+    <span class="hljs-attr">container</span>: { <span class="hljs-attr">gap</span>: <span class="hljs-string">'30px'</span> },
+    <span class="hljs-attr">cardMemberName</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ff0000'</span> }
+  }} 
+/&gt;
+</div></code></pre>
+<h4 id="header">Header</h4>
+<p>Displays the application header with logo.</p>
+<pre class="hljs"><code><div>&lt;Header 
+  logoSrc=<span class="hljs-string">"/path/to/logo.png"</span>
+  logoAlt=<span class="hljs-string">"Company Logo"</span>
+  logoWidth={<span class="hljs-number">200</span>}
+  logoHeight={<span class="hljs-number">50</span>}
+  customStyles={{ <span class="hljs-attr">header</span>: { <span class="hljs-attr">marginBottom</span>: <span class="hljs-string">'30px'</span> } }}
+/&gt;
+</div></code></pre>
+<h4 id="footer">Footer</h4>
+<p>Displays the application footer with links and disclaimer.</p>
+<pre class="hljs"><code><div>&lt;Footer 
+  links={{
+    <span class="hljs-attr">privacy</span>: <span class="hljs-string">"https://example.com/privacy"</span>,
+    <span class="hljs-attr">contactUs</span>: <span class="hljs-string">"https://example.com/contact"</span>,
+    <span class="hljs-attr">facebook</span>: <span class="hljs-string">"https://facebook.com/example"</span>
+  }}
+  sloganImage=<span class="hljs-string">"/path/to/slogan.png"</span>
+  facebookImage=<span class="hljs-string">"/path/to/facebook-icon.png"</span>
+  onLinkClick={(linkName, event) =&gt; trackClick(linkName)}
+  customStyles={{ <span class="hljs-attr">footer</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#f0f0f0'</span> } }}
+/&gt;
+</div></code></pre>
+<h4 id="navigation">Navigation</h4>
+<p>Provides navigation links.</p>
+<pre class="hljs"><code><div>&lt;Navigation 
+  isVisible={<span class="hljs-literal">true</span>}
+  links={[
+    { <span class="hljs-attr">to</span>: <span class="hljs-string">'/dashboard'</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">'Dashboard'</span> },
+    { <span class="hljs-attr">to</span>: <span class="hljs-string">'/reports'</span>, <span class="hljs-attr">text</span>: <span class="hljs-string">'Reports'</span> }
+  ]}
+  customStyles={{ <span class="hljs-attr">navigation</span>: { <span class="hljs-attr">width</span>: <span class="hljs-string">'250px'</span> } }}
+/&gt;
+</div></code></pre>
+<h4 id="loadingspinner">LoadingSpinner</h4>
+<p>Displays a loading indicator.</p>
+<pre class="hljs"><code><div>&lt;LoadingSpinner message=<span class="hljs-string">"Loading data..."</span> /&gt;
+</div></code></pre>
+<h4 id="errormessage">ErrorMessage</h4>
+<p>Displays error messages.</p>
+<pre class="hljs"><code><div>&lt;ErrorMessage 
+  message=<span class="hljs-string">"Failed to load data"</span> 
+  retry={() =&gt; fetchData()} 
+/&gt;
+</div></code></pre>
+<h4 id="backtotopbutton">BackToTopButton</h4>
+<p>Provides buttons to navigate home and scroll to top.</p>
+<pre class="hljs"><code><div>&lt;BackToTopButton 
+  showHomeButton={<span class="hljs-literal">true</span>}
+  homeText=<span class="hljs-string">"Home"</span>
+  backToTopText=<span class="hljs-string">"Back to Top"</span>
+  customStyles={{ <span class="hljs-attr">button</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#ff0000'</span> } }}
+/&gt;
+</div></code></pre>
+<h2 id="utility-classes">Utility Classes</h2>
+<h3 id="logger">Logger</h3>
+<p>The <code>Logger</code> utility provides logging functionality with different log levels.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { Logger } <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/Logger'</span>;
+
+<span class="hljs-comment">// Usage</span>
+Logger.info(<span class="hljs-string">'Information message'</span>);
+Logger.error(<span class="hljs-string">'Error message:'</span>, error);
+Logger.debug(<span class="hljs-string">'Debug message'</span>);
+Logger.warn(<span class="hljs-string">'Warning message'</span>);
+
+<span class="hljs-comment">// Set log level</span>
+Logger.setLogLevel(<span class="hljs-string">'error'</span>); <span class="hljs-comment">// Only show error messages</span>
+</div></code></pre>
+<h3 id="chartutils">ChartUtils</h3>
+<p>The <code>ChartUtils</code> utility provides functions for chart data processing and CSV generation.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { ChartUtils } <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/ChartUtils'</span>;
+
+<span class="hljs-comment">// Process data for charts</span>
+<span class="hljs-keyword">const</span> chartData = ChartUtils.processMonthlySpendData(data);
+<span class="hljs-keyword">const</span> categoryData = ChartUtils.processCategoryData(data);
+
+<span class="hljs-comment">// Generate and download CSV</span>
+<span class="hljs-keyword">const</span> csvContent = ChartUtils.generateCSV(tableData, headers);
+ChartUtils.downloadCSV(csvContent, <span class="hljs-string">'filename.csv'</span>);
+</div></code></pre>
+<h2 id="customization-guide">Customization Guide</h2>
+<h3 id="theming">Theming</h3>
+<p>You can customize the theme by providing an <code>initialTheme</code> object to the <code>App</code> component:</p>
+<pre class="hljs"><code><div></div></code></pre>
+
+</body>
+</html>

@@ -14,12 +14,16 @@ import { useTheme } from '../context/ThemeContext';
  */
 const Footer = ({ 
   links, 
-  sloganImage = '/images/slogan.png',
+  sloganImage,
   facebookImage = '/images/facebook.png',
   onLinkClick,
   customStyles = {}
 }) => {
   const { theme } = useTheme();
+
+  // Select slogan and facebook images based on theme
+  const sloganToUse = sloganImage || (theme.mode === 'dark' ? '/images/slogan_white.png' : '/images/slogan.png');
+  const facebookToUse = theme.mode === 'dark' ? '/images/facebook_white.png' : '/images/facebook.png';
 
   // Default links
   const defaultLinks = {
@@ -95,7 +99,7 @@ const Footer = ({
   return (
     <footer style={styles.footer} className="footer">
       <div style={styles.slogan} className="footer-slogan">
-        <img src={sloganImage} alt="Don't do business without it" width="302" height="30" />
+        <img src={sloganToUse} alt="Don't do business without it" width="302" height="30" />
       </div>
 
       <div style={styles.links} className="footer-links">
@@ -131,7 +135,7 @@ const Footer = ({
             className="facebook-link"
             onClick={(e) => trackClick('facebook', e)}
           >
-            <img src={facebookImage} alt="" width="27" height="27" />
+            <img src={facebookToUse} alt="Facebook" width="32" height="32" style={styles.social} />
             Like us on Facebook @AmericanExpressSA
           </a>
         </p>

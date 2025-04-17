@@ -89,11 +89,33 @@ main {
 }
 
 .card-member, 
-.card-member-details {
-  background-color: var(--card-background);
+.card-member-details, 
+.tables, 
+.dashboard-card {
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s cubic-bezier(.4,2,.6,1), transform 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+.card-member:hover, 
+.card-member-details:hover, 
+.tables:hover, 
+.dashboard-card:hover, 
+.monthlyCard:hover {
+  box-shadow: 0 16px 40px 0 rgba(0,0,0,0.26), 0 3px 12px rgba(0,0,0,0.18);
+  transform: translateY(-10px) scale(1.04);
+  z-index: 3;
+}
+
+[data-theme="dark"] .card-member, 
+[data-theme="dark"] .card-member-details, 
+[data-theme="dark"] .tables, 
+[data-theme="dark"] .dashboard-card {
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
 }
 
 .card-member {
@@ -383,6 +405,24 @@ tfoot td {
   margin-bottom: 15px;
 }
 
+.monthlyCard {
+  transition: box-shadow 0.25s cubic-bezier(.4,2,.6,1), transform 0.25s cubic-bezier(.4,2,.6,1);
+}
+
+.monthlyCard:hover {
+  box-shadow: 0 16px 48px 0 rgba(0,0,0,0.36), 0 6px 24px rgba(0,0,0,0.22);
+  transform: translateY(-12px) scale(1.06);
+  z-index: 5;
+}
+
+/* Make dashboard/intro cards lift more on hover */
+.dashboard-card:hover, .intro .cards > div:hover {
+  box-shadow: 0 16px 48px 0 rgba(0,0,0,0.36), 0 6px 24px rgba(0,0,0,0.22);
+  transform: translateY(-12px) scale(1.06);
+  z-index: 5;
+}
+
+
 /* Monthly Analysis Pages */
 .monthly-spend-analysis,
 .monthly-supplier-category-analysis,
@@ -441,12 +481,80 @@ tfoot td {
 }
 
 .hidden {
-  display: none;
+display: none;
 }
 
 .total-line {
-  font-weight: bold;
-  background-color: #f0f0f0;
+font-weight: bold;
+background-color: #f0f0f0;
+}
+
+/* Group shadow effect for 3 consecutive total rows */
+.total-group-row {
+transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1);
+position: relative;
+z-index: 1;
+}
+.total-group-row.total-group-lift {
+box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 3px 12px rgba(0,0,0,0.18);
+z-index: 3;
+}
+
+[data-theme="dark"] .total-line,
+[data-theme="dark"] tr.total-line,
+[data-theme="dark"] td.total-line,
+[data-theme="dark"] th.total-line {
+background: #23272f !important;
+color: #fff !important;
+border-color: #333 !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+/* Maximum specificity: force all cells in .total-line row to be dark in dark mode */
+[data-theme="dark"] tr.total-line td,
+[data-theme="dark"] tr.total-line th {
+  background: #101216 !important;
+  color: #fff !important;
+  border-color: #333 !important;
+  transition: box-shadow 0.2s;
+}
+
+[data-theme="dark"] tr.total-line:hover td,
+[data-theme="dark"] tr.total-line:hover th {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.6), 0 1.5px 8px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+[data-theme="dark"] tr.total-line * {
+  background: #23272f !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+
+
+/* Fix for subtotal/summary/total rows in DataTables (dark mode) */
+[data-theme="dark"] tr.total-line td,
+[data-theme="dark"] tr.total-line th,
+[data-theme="dark"] tr.subtotal-line td,
+[data-theme="dark"] tr.subtotal-line th,
+[data-theme="dark"] tr.summary-row td,
+[data-theme="dark"] tr.summary-row th {
+  background-color: #23272f !important;
+  color: #fff !important;
+}
+
+/* For DataTables subtotal/summary rows that use inline style or .dt-row class */
+[data-theme="dark"] tr[style*="background-color: white"],
+[data-theme="dark"] tr.dt-row[style*="background-color: white"] {
+  background-color: #23272f !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] tr[style*="color: white"],
+[data-theme="dark"] tr.dt-row[style*="color: white"] {
+  color: #fff !important;
 }
 
 .loading {
@@ -521,4 +629,39 @@ tfoot td {
     flex-direction: column;
     gap: 10px;
   }
+}
+
+/* Dark mode overrides (for fallback/compatibility) */
+[data-theme="dark"] {
+  --primary-color: #90caf9;
+  --secondary-color: #1976d2;
+  --tertiary-color: #424242;
+  --background-color: #181A20;
+  --text-color: #e0e0e0;
+  --border-color: #333;
+  --card-background: #23272f;
+  --link-color: #90caf9;
+  --button-color: #1976d2;
+  --button-text-color: #fff;
+}
+
+/* FORCE ALL <td> tags to be dark in dark mode, no matter what */
+[data-theme="dark"] td {
+  background: #23272f !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+[data-theme="dark"] th {
+  background: #23272f !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+[data-theme="dark"] img[src*="header.png"],
+[data-theme="dark"] img[src*="slogan.png"],
+[data-theme="dark"] img[src*="card1.png"],
+[data-theme="dark"] img[src*="card2.png"],
+[data-theme="dark"] img[src*="card3.png"] {
+  filter: brightness(0) invert(1) !important;
 }

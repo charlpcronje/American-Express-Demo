@@ -1,5 +1,5 @@
 // src/pages/MonthlySupplierAnalysis.js
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Logger } from '../utils/Logger';
 import { useData } from '../context/DataContext';
 import { useTheme } from '../context/ThemeContext';
@@ -17,6 +17,7 @@ const MonthlySupplierAnalysis = ({
   customStyles = {},
   tableOptions = {}
 }) => {
+  const [hoveredTotalRow, setHoveredTotalRow] = useState(null);
   const { data } = useData();
   const { theme } = useTheme();
   const tableRef = useRef(null);
@@ -149,12 +150,18 @@ const MonthlySupplierAnalysis = ({
             </thead>
             <tbody>
               {subCategoryAnalysisRepeat.map((item, index) => {
-                const isTotal = item.category?.startsWith('Total ') || false;
-                
+                const isTotalGroup = totalStartIndex !== -1 && index >= totalStartIndex && index < totalStartIndex + 3;
+                const rowClass = [
+                  item.category?.startsWith('Total ') ? 'total-line' : '',
+                  isTotalGroup ? 'total-group-row' : '',
+                  isTotalGroup && groupHovered ? 'total-group-lift' : ''
+                ].filter(Boolean).join(' ');
                 return (
-                  <tr 
-                    key={`supplier-${index}`} 
-                    className={isTotal ? 'total-line' : ''}
+                  <tr
+                    key={`supplier-${index}`}
+                    className={rowClass}
+                    onMouseEnter={isTotalGroup ? () => setGroupHovered(true) : undefined}
+                    onMouseLeave={isTotalGroup ? () => setGroupHovered(false) : undefined}
                   >
                     <td>{item.category || ''}</td>
                     <td>{item.discription || ''}</td>

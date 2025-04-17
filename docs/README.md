@@ -1,5 +1,29 @@
 # American Express Reports Dashboard
 
+> [Component Customization & Best Practices](./component-customization-and-best-practices.html)
+> [Assets and Test Data](./assets-and-testdata.html)
+> [Build Process](./build-process.html)
+> [Troubleshooting Guide](./troubleshooting.html)
+
+## 📚 Documentation Index
+
+- [Component Customization & Best Practices](./component-customization-and-best-practices.html): How to customize, extend, and future-proof components. Best practices and options for reuse.
+- [Customization Guide](./customization-guide.html): Practical instructions and examples for theming, styling, and advanced component customization.
+- [Assets and Test Data](./assets-and-testdata.html): Where to place images and test data for dev/prod.
+- [Build Process](./build-process.html): How to build, serve, and deploy the dashboard.
+- [Troubleshooting Guide](./troubleshooting.html): Common issues and how to debug them.
+
+## Folder Structure
+
+- `/src/components`: Reusable UI components
+- `/src/pages`: Page-level components
+- `/src/context`: Context providers (theme, data)
+- `/src/styles`: Global and component styles
+- `/public`: Static assets (images, data)
+- `/docs`: Project documentation
+
+---
+
 ## Project Purpose & Demo Context
 
 This project is a demonstration of how to convert interactive dashboards to React using a reusable, component-based approach. The goal is to provide your team with a foundation for building future dashboards and to teach best practices for scalable, maintainable React apps.
@@ -14,6 +38,8 @@ The dashboard uses React and the Context API for global state management (themin
 - **DataContext:** Centralizes data fetching and state.
 - **ThemeContext:** Manages theming and color schemes.
 - **Logger:** Centralized logging for debugging and troubleshooting.
+
+---
 
 ## Core Components
 
@@ -231,6 +257,9 @@ ChartUtils.downloadCSV(csvContent, 'filename.csv');
 ```
 
 ## Customization Guide
+
+See the [Customization Guide](./customization-guide.html) for detailed, practical instructions and more examples on theming, styling, and component customization.
+
 
 ### Theming
 

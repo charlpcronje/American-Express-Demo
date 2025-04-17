@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Documentation Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background: #181c22;
+      color: #e6eaf1;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; padding: 0 0 60px 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px; margin: 2.5em auto; padding: 2em; background: #232834; border-radius: 14px; box-shadow: 0 4px 24px #0003;
+    }
+    h1 { color: #58a6ff; margin-bottom: 0.5em; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 1.2em 0; }
+    a { color: #58a6ff; text-decoration: none; font-weight: bold; }
+    a:hover { text-decoration: underline; }
+    .desc { color: #b2bac6; font-size: 0.96em; margin-left: 0.5em; }
+    .comment-btn { margin-left: 1em; background: #1f6feb; color: #fff; border: none; border-radius: 4px; padding: 0.25em 0.7em; cursor: pointer; font-size: 0.96em; }
+    .comment-btn:hover { background: #58a6ff; }
+    #comment-modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(24,28,34,0.9); }
+    #comment-modal .modal-content { background: #232834; color: #e6eaf1; border-radius: 8px; padding: 2em; max-width: 400px; margin: 10vh auto; box-shadow: 0 4px 24px #0007; }
+    #comment-modal textarea { width: 100%; min-height: 80px; margin-bottom: 1em; border-radius: 6px; border: 1px solid #58a6ff; background: #181c22; color: #e6eaf1; font-size: 1em; padding: 0.5em; }
+    #comment-modal button { margin-right: 0.5em; }
+    .footer { text-align: center; color: #b2bac6; margin-top: 2em; font-size: 0.92em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Documentation Index</h1>
+    <ul>
+      <li><a href="README.html">Project Overview</a> <span class="desc">Main project summary, architecture, and navigation.</span></li>
+      <li><a href="component-customization-and-best-practices.html">Component Customization & Best Practices</a> <span class="desc">How to customize, extend, and document components.</span></li>
+      <li><a href="customization-guide.html">Customization Guide</a> <span class="desc">Practical theming, styling, and advanced customization examples.</span></li>
+      <li><a href="assets-and-testdata.html">Assets and Test Data</a> <span class="desc">Where to place images and test data for dev/prod.</span></li>
+      <li><a href="build-process.html">Build Process</a> <span class="desc">How to build, serve, and deploy the dashboard.</span></li>
+      <li><a href="troubleshooting.html">Troubleshooting Guide</a> <span class="desc">Common issues and how to debug them.</span></li>
+      <li><a href="future-architecture-options.html">Future Architecture Options</a> <span class="desc">Overview of possible strategies for scaling your dashboard ecosystem.</span></li>
+      <li><a href="option-1-online-library.html">Option 1: Online Component Library</a> <span class="desc">Centralized, presentational components referenced from Razor templates.</span></li>
+      <li><a href="option-2-xml-xslt.html">Option 2: XML + XSLT Transformation</a> <span class="desc">Author dashboards in XML, transform with XSLT, inject data.</span></li>
+      <li><a href="option-3-lit-react.html">Option 3: LitElement + React Wrappers</a> <span class="desc">Web components with React wrappers for cross-framework use.</span></li>
+      <li><a href="option-4-xmlt-webcomponents.html">Option 4: XMLT-Driven Web Components</a> <span class="desc">Custom XML tags, transformed to web components, secure JS delivery.</span></li>
+      <li><a href="option-5-micro-frontend.html">Option 5: Micro-Frontend Architecture</a> <span class="desc">Independent deployable dashboards with shared UI components.</span></li>
+      <li><a href="option-6-json-schema.html">Option 6: Server-Driven UI via JSON Schema</a> <span class="desc">Dashboards as JSON schema, universal renderer, highly decoupled.</span></li>
+    </ul>
+    <div class="footer">Select text on any documentation page and click <b>Comment</b> to leave feedback or questions.</div>
+  </div>
+
+  <div id="comment-modal">
+    <div class="modal-content">
+      <h2>Comment on Selection</h2>
+      <div id="selected-text" style="font-size:0.95em; background:#181c22; padding:0.7em; border-radius:4px; margin-bottom:1em;"></div>
+      <textarea id="comment-input" placeholder="Enter your comment..."></textarea>
+      <br />
+      <button onclick="submitComment()">Submit</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // Enable commenting on selected text on any page
+    document.addEventListener('mouseup', function(e) {
+      const selection = window.getSelection();
+      const text = selection && selection.toString().trim();
+      if (text && text.length > 0) {
+        if (document.getElementById('comment-btn')) return;
+        const btn = document.createElement('button');
+        btn.textContent = 'Comment';
+        btn.className = 'comment-btn';
+        btn.id = 'comment-btn';
+        btn.onclick = function(ev) {
+          ev.preventDefault();
+          showModal(text);
+        };
+        const range = selection.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        btn.style.position = 'fixed';
+        btn.style.top = `${rect.bottom + window.scrollY + 5}px`;
+        btn.style.left = `${rect.left + window.scrollX}px`;
+        document.body.appendChild(btn);
+        setTimeout(() => {
+          document.addEventListener('mousedown', removeBtn, { once: true });
+        }, 0);
+      }
+    });
+    function removeBtn() {
+      const btn = document.getElementById('comment-btn');
+      if (btn) btn.remove();
+    }
+    function showModal(selectedText) {
+      document.getElementById('selected-text').textContent = selectedText;
+      document.getElementById('comment-modal').style.display = 'block';
+      document.getElementById('comment-input').value = '';
+    }
+    function closeModal() {
+      document.getElementById('comment-modal').style.display = 'none';
+    }
+    async function submitComment() {
+      const selectedText = document.getElementById('selected-text').textContent;
+      const comment = document.getElementById('comment-input').value;
+      if (!comment.trim()) { alert('Please enter a comment.'); return; }
+      // --- API endpoint setup ---
+      const apiUrl = '/api/comments'; // Change as needed
+      const payload = {
+        page: window.location.pathname,
+        selectedText,
+        comment,
+        timestamp: new Date().toISOString()
+      };
+      try {
+        const res = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          alert('Comment submitted!');
+          closeModal();
+        } else {
+          alert('Failed to submit comment.');
+        }
+      } catch (e) {
+        alert('Error submitting comment.');
+      }
+    }
+  </script>
+<script src="comment.js"></script>
+</body>
+</html>

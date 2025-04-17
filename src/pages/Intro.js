@@ -13,15 +13,20 @@ import { useTheme } from '../context/ThemeContext';
  */
 const Intro = ({ 
   customStyles = {},
-  bannerImage = '/images/banner.png',
-  cardImages = [
-    '/images/card3.png',
-    '/images/card2.png',
-    '/images/card1.png'
-  ]
+  bannerImage,
+  cardImages,
 }) => {
   const { data } = useData();
   const { theme } = useTheme();
+
+  // Always use banner.png as the main banner
+  const bannerToUse = '/images/banner.png';
+  const isDark = theme.mode === 'dark';
+  const cardsToUse = cardImages || [
+    isDark ? '/images/card3_white.png' : '/images/card3.png',
+    isDark ? '/images/card2_white.png' : '/images/card2.png',
+    isDark ? '/images/card1_white.png' : '/images/card1.png'
+  ];
 
   if (!data) return null;
 
@@ -153,7 +158,7 @@ const Intro = ({
   return (
     <div id="intro" className="intro">
       <div style={styles.container}>
-        <img src={bannerImage} alt="No more time wasted reconciling company expenses" style={styles.banner} />
+        <img src={bannerToUse} alt="No more time wasted reconciling company expenses" style={styles.banner} />
 
         <div style={styles.cards}>
           <div style={styles.cardMember}>
@@ -183,7 +188,7 @@ const Intro = ({
 
           <div style={styles.monthlyCard}>
             <p>
-              <img src={cardImages[0]} alt="" width="32" height="35" />
+              <img src={cardsToUse[0]} alt="" width="32" height="35" />
             </p>
             <p>Monthly spend analysis</p>
             <p>
@@ -193,7 +198,7 @@ const Intro = ({
 
           <div style={styles.monthlyCard}>
             <p>
-              <img src={cardImages[1]} alt="" width="32" height="35" />
+              <img src={cardsToUse[1]} alt="" width="32" height="35" />
             </p>
             <p>Monthly supplier category analysis</p>
             <p>
@@ -203,7 +208,7 @@ const Intro = ({
 
           <div style={styles.monthlyCard}>
             <p>
-              <img src={cardImages[2]} alt="" width="32" height="35" />
+              <img src={cardsToUse[2]} alt="" width="32" height="35" />
             </p>
             <p>Monthly supplier analysis</p>
             <p>
